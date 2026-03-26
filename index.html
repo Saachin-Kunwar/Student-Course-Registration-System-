@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Registration Form</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Student Course Registration</h1>
+
+    <form id="registrationForm" novalidate>
+
+        <!-- Personal Info -->
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required minlength="3" aria-describedby="nameError">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required aria-describedby="emailError">
+
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10 digit number" required aria-describedby="phoneError">
+        </fieldset>
+
+        <!-- Course Details -->
+        <fieldset>
+            <legend>Course Details</legend>
+
+            <label for="course">Choose Course</label>
+            <select id="course" name="course" required aria-describedby="courseError">
+                <option value="">-- Select Course --</option>
+
+                <optgroup label="Web Development">
+                    <option value="HTML & CSS">HTML & CSS</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Django">Django</option>
+                </optgroup>
+
+                <optgroup label="Programming">
+                    <option value="Python">Python</option>
+                    <option value="Java">Java</option>
+                    <option value="C++">C++</option>
+                </optgroup>
+            </select>
+
+            <label for="level">Skill Level</label>
+            <input list="levels" id="level" name="level" required aria-describedby="levelError">
+            <datalist id="levels">
+                <option value="Beginner">
+                <option value="Intermediate">
+                <option value="Advanced">
+            </datalist>
+        </fieldset>
+
+        <!-- Additional Info -->
+        <fieldset>
+            <legend>Additional Information</legend>
+
+            <label for="message">Why this course?</label>
+            <textarea id="message" name="message" required minlength="10" aria-describedby="messageError"></textarea>
+            <span id="charCount">0 / 50</span>
+
+            <label for="hours">Study Hours</label>
+            <input type="range" id="hours" name="hours" min="1" max="40" value="20" oninput="result.value = hours.value">
+            <output id="result" for="hours">20</output>
+        </fieldset>
+
+        <!-- Error / Success Messages -->
+        <p id="errorMsg" role="alert"></p>
+        <p id="successMsg" role="status"></p>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <!-- List of Registrations -->
+    <h2>Submitted Registrations</h2>
+    <ul id="registrationList"></ul>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>
